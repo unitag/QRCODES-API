@@ -4,7 +4,7 @@
 
 The API base URL is: `http://api.qrcode.unitag.fr/api`
 
-A QR Codes API request is based on these following primary parameters.
+A QR Codes API request is based on these following primary parameters:
 
 ##Parameters##
 
