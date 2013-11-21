@@ -1,16 +1,42 @@
 #QR Code API#
 
-The QR Code API requests are based on this JSON :
+##The request##
 
-	{
-		data : {
-			type : "",
-			data : {}
-		},
-		setting : {}
-	}
+The API base URL is: `http://api.qrcode.unitag.fr/api`
+
+A QR Codes API request is based on these following primary parameters.
+
+##Parameters##
+
+###t_pwd###
+Authentication for your account. To obtain a token please create an account on Unitag's platform and contact the Unitag Team.
+
+You can set `degraded` as value for tests (limited to PNG format and 200px size).
+
+###T###
+Optional parameter - provides an SVG image. If needed, set value to `SVG`.
+
+###stored###
+Optional parameter - The stored parameter lets you store the QR Code in your Unitag Dashboard. If needed, set value to `true`.
+
+
+###setting###
+The setting parameter value is JSON formated and contains all QR Code customizations parameters. See description and examples below
+
+###data###
+The data parameter value is JSON formated and contains all QR Code encoded data. See description and examples below
+
+###templateId###
+The parameter templateId can replace the parameter setting in order to indicate a Unitag Template to use as a design. If needed, set value to the targeted template id Integer.
+
+
 
 ##Data object##
+
+	data : {
+		type : "",
+		data : {}
+	}
 
 ###"Type" - STRING###
 
@@ -96,6 +122,7 @@ The QR Code API requests are based on this JSON :
 			country : ""
 		}
 	}
+	
 
 **Type : email**
 
@@ -119,6 +146,7 @@ The QR Code API requests are based on this JSON :
 			DATE_FIN : ""
 		}
 	}
+*LIEU : Place ; DATE_DEBUT : Start date ; DATE_FIN ; End date*
 	
 **Type : call**
 
@@ -132,7 +160,7 @@ The QR Code API requests are based on this JSON :
 
 ##Setting object##
 
-	{
+	setting : {
 		LAYOUT : {},
 		EYES : {},
 		LOGO : {},
@@ -142,6 +170,9 @@ The QR Code API requests are based on this JSON :
 		ARRONDI : INT,
 		QUIET_ZONE : BOOLEAN
 	}
+
+*ARRONDI : Radius*
+	
 ###LAYOUT - OBJECT###
 
 	LAYOUT : {
@@ -290,12 +321,13 @@ Use this module to add text under the QR Code
 		FAMILYLINK : String,
 		QRMARGIN : int,
 		SPACING : int
-		}
+	}
+	
 		
-*LABEL : put \n for new lines		
-*POSITION : CENTER, LEFT, RIGHT or AUTO ( ie resize to take maximum space beneath the QR Code )
-*STYLES : PLAIN, BOLD, ITALIC, TOTAL ( BOLD+ITALIC )
-*FAMILY : Have a look at our font catalog, or CUSTOM
-*FAMILYLINK : only if FAMILY is CUSTOM, a link to a .TTF or .OTF file containing the family you wish to use
-*QRMARGIN : space between the QR Code and the text
-*SPACING : space in between two lines of text
+* LABEL : put \n for new lines		
+* POSITION : CENTER, LEFT, RIGHT or AUTO ( ie resize to take maximum space beneath the QR Code )
+* STYLES : PLAIN, BOLD, ITALIC, TOTAL ( BOLD+ITALIC )
+* FAMILY : Have a look at our font catalog, or CUSTOM
+* FAMILYLINK : only if FAMILY is CUSTOM, a link to a .TTF or .OTF file containing the family you wish to use
+* QRMARGIN : space between the QR Code and the text
+* SPACING : space in between two lines of text
