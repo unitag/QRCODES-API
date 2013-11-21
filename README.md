@@ -1,4 +1,8 @@
-QR_CODES_API
+QRCODES-API
 ============
 
-Documentation for Unitag's QR Codes API
+Please find the documentation for Unitag's QR Codes API in documentation.md file.
+
+
+--
+Unitag Team
