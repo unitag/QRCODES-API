@@ -1,34 +1,51 @@
 #QR Code API#
 
-##The request##
+##Request##
 
 The API base URL is: `http://api.qrcode.unitag.fr/api`
 
-A QR Codes API request is based on these following primary parameters:
+A QR Code API request is based on these following primary parameters:
 
 ##Parameters##
 
-###t_pwd###
-Authentication for your account. To obtain a token please create an account on Unitag's platform and contact the Unitag Team.
+###t_pwd (required)
+Provide the authentication for your account.
 
-You can set `degraded` as value for tests (limited to PNG format and 200px size).
+Values:
+- To obtain a token please create an account on Unitag's platform and contact the Unitag Team.
+- You can set `degraded` as value for tests (the answer received will be limited to a PNG format image of 200px size).
 
-###T###
-Optional parameter - provides an SVG image. If needed, set value to `SVG`.
+###T (optional)
+Change the image format received.
 
-###stored###
-Optional parameter - The stored parameter lets you store the QR Code in your Unitag Dashboard. If needed, set value to `true`.
+Values: `SVG`, `PDF`, `PNG`, `JPEG`.
 
+###stored (optional)
+Store the QR Code in your Unitag Dashboard.
 
-###setting###
+Values: If needed, set value to `true`.
+
+###SIZE (optional)
+Change the image size in pixels.
+
+Values : integer between 0 and 3,000
+
+###setting (required)
+Send custom parameters to your QR Code design.
+
 The setting parameter value is JSON formated and contains all QR Code customizations parameters. See description and examples below
 
-###data###
-The data parameter value is JSON formated and contains all QR Code encoded data. See description and examples below
+Can be replaced by the templateId parameter.
 
-###templateId###
-The parameter templateId can replace the parameter setting in order to indicate a Unitag Template to use as a design. If needed, set value to the targeted template id Integer.
+###data (required)
+Send QR Code data.
 
+The data parameter value is JSON formated and contains all QR Code encoded data. See description and examples below.
+
+###templateId (optional)
+The parameter templateId can replace the parameter setting in order to indicate a Unitag Template to use as a design.
+
+Values : If needed, set value to the targeted template id Integer.
 
 
 ##Data object##
