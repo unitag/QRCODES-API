@@ -284,7 +284,7 @@ The upper corner of the logo in the QR Code as a percentage. Omit to have it cen
 
 ###BACKGROUND###
 
-	LOGO : {
+	BACKGROUND : {
 		IMAGE_BACKGROUND : "",
 		ENLIGHTMENT : FLOAT,
 		CONTRAST : FLOAT
