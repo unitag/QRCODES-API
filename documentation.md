@@ -51,8 +51,8 @@ Values : If needed, set value to the targeted template id Integer.
 ##Data object##
 
 	data : {
-		type : "",
-		data : {}
+		TYPE : "",
+		DATA : {}
 	}
 
 ###"Type" - STRING###
@@ -72,8 +72,8 @@ Values : If needed, set value to the targeted template id Integer.
 **Type : url**
 
 	data : {
-		type : "url",
-		data : {
+		TYPE : "url",
+		DATA : {
 			URL : ""
 		}
 	}
@@ -81,8 +81,8 @@ Values : If needed, set value to the targeted template id Integer.
 **Type : text**
 
 	data : {
-		type : "text",
-		data : {
+		TYPE : "text",
+		DATA : {
 			TEXT : ""
 		}
 	}
@@ -90,8 +90,8 @@ Values : If needed, set value to the targeted template id Integer.
 **Type : geoloc**
 
 	data : {
-		type : "geoloc",
-		data : {
+		TYPE : "geoloc",
+		DATA : {
 			LAT : "",
 			LONG : ""
 		}
@@ -100,8 +100,8 @@ Values : If needed, set value to the targeted template id Integer.
 **Type : smsto**
 
 	data : {
-		type : "smsto",
-		data : {
+		TYPE : "smsto",
+		DATA : {
 			TEL : "",
 			MESSAGE : ""
 		}
@@ -110,8 +110,8 @@ Values : If needed, set value to the targeted template id Integer.
 **Type : wifi**
 
 	data : {
-		type : "wifi",
-		data : {
+		TYPE : "wifi",
+		DATA : {
 			TYPE : "WEP"/"WPA"/"nopass",
 			SSID : "",
 			PASSWORD : ""
@@ -121,8 +121,8 @@ Values : If needed, set value to the targeted template id Integer.
 **Type : vcard**
 
 	data : {
-		type : "vcard",
-		data : {
+		TYPE : "vcard",
+		DATA : {
 			firstname : "",
 			name : "",
 			email;internet : "",
@@ -144,8 +144,8 @@ Values : If needed, set value to the targeted template id Integer.
 **Type : email**
 
 	data : {
-		type : "email",
-		data : {
+		TYPE : "email",
+		DATA : {
 			EMAIL : "",
 			EMAIL_OBJ : "",
 			EMAIL_CORPS : ""
@@ -155,8 +155,8 @@ Values : If needed, set value to the targeted template id Integer.
 **Type : calendar**
 
 	data : {
-		type : "calendar",
-		data : {
+		TYPE : "calendar",
+		DATA : {
 			TITLE : "",
 			LIEU : "",
 			DATE_DEBUT : "",
@@ -168,8 +168,8 @@ Values : If needed, set value to the targeted template id Integer.
 **Type : call**
 
 	data : {
-		type : "call",
-		data : {
+		TYPE : "call",
+		DATA : {
 			PHONE : ""
 		}
 	}
