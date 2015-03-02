@@ -1,0 +1,398 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>QR Code API</title><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  margin-left: 3px;
+  color: #c7254e;
+  background-color: rgba(255,255,255,0.7);
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item:hover {
+  background-color: #f8f8f8;
+  border-left: 2px solid #555;
+  padding-left: 15px;
+}
+.indent {
+  display: block;
+  text-indent: 16px;
+}
+.list-group-item {
+  padding-left: 16px;
+}
+.list-group-item .toggle .open {
+  display: block;
+}
+.list-group-item .toggle .closed {
+  display: none;
+}
+.list-group-item.collapsed .toggle .open {
+  display: none;
+}
+.list-group-item.collapsed .toggle .closed {
+  display: block;
+}
+a.list-group-item {
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  font-size: 15px;
+  background-color: #f5f5f5;
+}
+a.list-group-item.heading:hover {
+  background-color: #f8f8f8;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+.list-group-item a span.closed {
+  display: none;
+}
+.list-group-item a span.open {
+  display: block;
+}
+.list-group-item a.collapsed span.closed {
+  display: block;
+}
+.list-group-item a.collapsed span.open {
+  display: none;
+}
+#nav {
+  width: inherit;
+  margin-top: 38px;
+  max-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    max-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a data-toggle="" data-target="#-menu" href="#" class="list-group-item heading collapsed">Resource Group</a><div id="-menu"><a href="#-qr-code" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">QR Code</a><a href="#-qr-code-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span><span class="indent">Retrieve a QR Code</span></a><a href="#-qr-code-post" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span><span class="indent">Create a new QR Code</span></a><a href="#-qr-code-put" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span><span class="indent">Update a QR Code</span></a><a href="#-qr-code-delete" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span><span class="indent">Delete a QR Code</span></a><a href="#-qr-code-design" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">QR Code design</a><a href="#-qr-code-design-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span><span class="indent">Retrieve a QR Code design</span></a><a href="#-qr-code-design-post" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span><span class="indent">Create a new QR Code design</span></a><a href="#-qr-code-design-put" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span><span class="indent">Update a QR Code design</span></a><a href="#-qr-code-design-delete" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span><span class="indent">Delete a QR Code design</span></a><a href="#-qr-code-graphical-png-representation" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>QR Code graphical PNG representation</a><a href="#-zip-file-containing-the-graphical-png-representation-of-a-qr-code" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Zip file containing the graphical PNG representation of a QR Code</a><a href="#-zip-file-containing-the-graphical-png-representation-of-multiple-qr-codes" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span>Zip file containing the graphical PNG representation of multiple QR Codes</a></div></div></nav></div><div class="col-md-8"><div><header><div class="page-header"><h1 id="top">QR Code API</h1></div></header><div class="description"><p>This document describes the HTTP interface for accessing Unitag’s QR Code API.</p>
+<h2>Base URL</h2>
+<p>The following API routes are relative to this base URL:</p>
+<pre><code class="language-no-highlight">https://admin.unitag.io
+</code></pre>
+<h2>API reference</h2>
+<p>The following HTTP methods allow to manipulate QR Codes as JSON documents.</p>
+<h2>Examples</h2>
+<p>The following example can be used for testing purposes.</p>
+<h3>Minimal QR Code example</h3>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">content</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"URL"</span></span>,
+        "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"http://www.unitag.io"</span>
+    </span>}</span>, 
+    "<span class="hljs-attribute">design</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span></span>,
+        "<span class="hljs-attribute">creation</span>":<span class="hljs-value"><span class="hljs-string">"2014"</span></span>,
+        "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span></span>,
+        "<span class="hljs-attribute">eyes</span>":<span class="hljs-value">{"<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DIAMOND"</span></span>,"<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span></span>, "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span></span>}</span>,
+        "<span class="hljs-attribute">modules</span>":<span class="hljs-value">{"<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"ROUNDED"</span></span>,"<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span></span>}
+    </span>}</span>, 
+    "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span>
+</span>}
+</code></pre>
+<h2>Error handling</h2>
+<p>When the QR Code API encounters an error, it produces an HTTP response with an appropriate status code (<strong><code>4xx</code></strong> or <strong><code>5xx</code></strong>).</p>
+<p>When constraints on QR Codes are violated, an automatic error message is generated.
+For example:</p>
+<pre><code class="language-json">[PROPERTY]
+[eyes.outerColor]
+[may not be <span class="hljs-literal">null</span>]
+[<span class="hljs-literal">null</span>]
+</code></pre>
+<p>For any other errors not directly related to the structure of QR Codes, the response will contain a JSON body. This JSON document is always an object with the following keys:</p>
+<ul>
+<li><p><code>code</code>: a string identifying the error</p></li>
+<li><p><code>message</code>: a more verbose error description</p></li>
+<li><p><code>details</code>: if present, additional data which could help to figure out the cause of the error</p></li>
+</ul>
+<p>For example, when trying to update a QR Code with an id that doesn’t match any QR Code in the database:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"404"</span></span>,
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"This resource cannot be found"</span>
+</span>}
+</code></pre>
+<h1>QR Code API routes</h1>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="">Resource Group&nbsp;<a href="#"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="-qr-code">QR Code&nbsp;<a href="#-qr-code"><i class="fa fa-link"></i></a></h4><p>This resource represents one particular QR Code identified by its <strong>id</strong>.</p>
+<section id="-qr-code-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Retrieve a QR Code</span></div><div style="float:left"><a href="#-qr-code-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/newqrcodes/{id}</code></div></div><div class="panel-body"><p>Retrieve a QR Code by its <strong>id</strong>.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>ID of the QR Code.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#ab1deed69473e1b209604b7f2bcda104" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="ab1deed69473e1b209604b7f2bcda104" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"id"</span>:<span class="hljs-number">15448333</span>,
+    <span class="hljs-string">"content"</span>:{<span class="hljs-string">"type"</span>:<span class="hljs-string">"url"</span>,<span class="hljs-string">"url"</span>:<span class="hljs-string">"http://www.unitag.io"</span>,<span class="hljs-string">"text"</span>:null,<span class="hljs-keyword">...</span>},
+    <span class="hljs-string">"design"</span>:
+        {
+            <span class="hljs-string">"id"</span>:<span class="hljs-number">15448332</span>,
+            <span class="hljs-string">"creation"</span>:<span class="hljs-number">1425217249837</span>,
+            <span class="hljs-string">"color"</span>:<span class="hljs-string">"8a9935"</span>,
+            <span class="hljs-string">"modules"</span>:{<span class="hljs-string">"shape"</span>:<span class="hljs-string">"rounded"</span>,<span class="hljs-keyword">...</span>},
+            <span class="hljs-string">"logo"</span>:null,
+            <span class="hljs-keyword">...</span>
+        }
+}
+</code></pre></li></ul></section><section id="-qr-code-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create a new QR Code</span></div><div style="float:left"><a href="#-qr-code-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/newqrcodes/{id}</code></div></div><div class="panel-body"><p>Create a new QR Code.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>ID of the QR Code.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#a0e04f277ada23d4c043a46059691de1" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="a0e04f277ada23d4c043a46059691de1" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">content</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"URL"</span></span>,
+        "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"http://www.unitag.io"</span>
+    </span>}</span>, 
+    "<span class="hljs-attribute">design</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span></span>,
+        "<span class="hljs-attribute">creation</span>":<span class="hljs-value"><span class="hljs-string">"2015"</span></span>,
+        "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span></span>,
+        "<span class="hljs-attribute">eyes</span>":
+        <span class="hljs-value">{
+            "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DIAMOND"</span></span>,
+            "<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span></span>, 
+            "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">modules</span>":
+        <span class="hljs-value">{
+            "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"ROUNDED"</span></span>,
+            "<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span>
+        </span>}
+    </span>}</span>, 
+    "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#eb229fd0f1b52250d6424481e1bf03f5" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="eb229fd0f1b52250d6424481e1bf03f5" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"id"</span>:<span class="hljs-number">15448333</span>,
+    <span class="hljs-string">"content"</span>:{<span class="hljs-string">"type"</span>:<span class="hljs-string">"url"</span>,<span class="hljs-string">"url"</span>:<span class="hljs-string">"http://www.unitag.io"</span>,<span class="hljs-string">"text"</span>:null,<span class="hljs-keyword">...</span>},
+    <span class="hljs-string">"design"</span>:
+        {
+            <span class="hljs-string">"id"</span>:<span class="hljs-number">15448332</span>,
+            <span class="hljs-string">"creation"</span>:<span class="hljs-number">1425217249837</span>,
+            <span class="hljs-string">"color"</span>:<span class="hljs-string">"8a9935"</span>,
+            <span class="hljs-string">"modules"</span>:{<span class="hljs-string">"shape"</span>:<span class="hljs-string">"rounded"</span>,<span class="hljs-keyword">...</span>},
+            <span class="hljs-string">"logo"</span>:null,
+            <span class="hljs-keyword">...</span>
+        }
+}
+</code></pre></li></ul></section><section id="-qr-code-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Update a QR Code</span></div><div style="float:left"><a href="#-qr-code-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/newqrcodes/{id}</code></div></div><div class="panel-body"><p>Update a QR Code.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>ID of the QR Code.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#87e908f974bee2515ae8d2c0b71fec93" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="87e908f974bee2515ae8d2c0b71fec93" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">content</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"URL"</span></span>,
+        "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"http://www.unitag.io"</span>
+    </span>}</span>, 
+    "<span class="hljs-attribute">design</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span></span>,
+        "<span class="hljs-attribute">creation</span>":<span class="hljs-value"><span class="hljs-string">"2015"</span></span>,
+        "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span></span>,
+        "<span class="hljs-attribute">eyes</span>":
+        <span class="hljs-value">{
+            "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DIAMOND"</span></span>,
+            "<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span></span>, 
+            "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">modules</span>":
+        <span class="hljs-value">{
+            "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"ROUNDED"</span></span>,
+            "<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span>
+        </span>}
+    </span>}</span>, 
+    "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#320bbd75bf7a4f60219c8a32b56adbe6" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="320bbd75bf7a4f60219c8a32b56adbe6" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    <span class="hljs-string">"id"</span>:<span class="hljs-number">15448333</span>,
+    <span class="hljs-string">"content"</span>:{<span class="hljs-string">"type"</span>:<span class="hljs-string">"url"</span>,<span class="hljs-string">"url"</span>:<span class="hljs-string">"http://www.unitag.io"</span>,<span class="hljs-string">"text"</span>:null,<span class="hljs-keyword">...</span>},
+    <span class="hljs-string">"design"</span>:
+        {
+            <span class="hljs-string">"id"</span>:<span class="hljs-number">15448332</span>,
+            <span class="hljs-string">"creation"</span>:<span class="hljs-number">1425217249837</span>,
+            <span class="hljs-string">"color"</span>:<span class="hljs-string">"8a9935"</span>,
+            <span class="hljs-string">"modules"</span>:{<span class="hljs-string">"shape"</span>:<span class="hljs-string">"rounded"</span>,<span class="hljs-keyword">...</span>},
+            <span class="hljs-string">"logo"</span>:null,
+            <span class="hljs-keyword">...</span>
+        }
+}
+</code></pre></li></ul></section><section id="-qr-code-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Delete a QR Code</span></div><div style="float:left"><a href="#-qr-code-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/newqrcodes/{id}</code></div></div><div class="panel-body"><p>Delete a QR Code. <strong>Warning:</strong> This action <strong>permanently</strong> removes the QR Code from the database.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>ID of the QR Code.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>204</code></strong></li></ul></section><h4 id="-qr-code-design">QR Code design&nbsp;<a href="#-qr-code-design"><i class="fa fa-link"></i></a></h4><p>This resource represents a QR Code design identified by its <strong>id</strong>.</p>
+<section id="-qr-code-design-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Retrieve a QR Code design</span></div><div style="float:left"><a href="#-qr-code-design-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/newqrcodes/design/{id}</code></div></div><div class="panel-body"><p>Retrieve a QR Code design by its <strong>id</strong>.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>ID of the QR Code design.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#27d4ee1e420fdd0049070e8e168847d9" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="27d4ee1e420fdd0049070e8e168847d9" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span></span>,
+    "<span class="hljs-attribute">creation</span>":<span class="hljs-value"><span class="hljs-string">"2014"</span></span>,
+    "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span></span>,
+    "<span class="hljs-attribute">eyes</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DIAMOND"</span></span>,
+        "<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span></span>, 
+        "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">modules</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"ROUNDED"</span></span>,
+        "<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span>
+    </span>}
+</span>}
+</code></pre></li></ul></section><section id="-qr-code-design-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create a new QR Code design</span></div><div style="float:left"><a href="#-qr-code-design-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/newqrcodes/design/{id}</code></div></div><div class="panel-body"><p>Create a new QR Code design.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>ID of the QR Code design.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#7b5ff13e8933a699dc76f1fe389f46e3" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="7b5ff13e8933a699dc76f1fe389f46e3" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span></span>,
+    "<span class="hljs-attribute">creation</span>":<span class="hljs-value"><span class="hljs-string">"2014"</span></span>,
+    "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span></span>,
+    "<span class="hljs-attribute">eyes</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DIAMOND"</span></span>,
+        "<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span></span>, 
+        "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">modules</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"ROUNDED"</span></span>,
+        "<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span>
+    </span>}
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#18eb20b5462c7d43585d0ce7f7a9d977" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="18eb20b5462c7d43585d0ce7f7a9d977" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span></span>,
+    "<span class="hljs-attribute">creation</span>":<span class="hljs-value"><span class="hljs-string">"2014"</span></span>,
+    "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span></span>,
+    "<span class="hljs-attribute">eyes</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DIAMOND"</span></span>,
+        "<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span></span>, 
+        "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">modules</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"ROUNDED"</span></span>,
+        "<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span>
+    </span>}
+</span>}
+</code></pre></li></ul></section><section id="-qr-code-design-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Update a QR Code design</span></div><div style="float:left"><a href="#-qr-code-design-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/newqrcodes/design/{id}</code></div></div><div class="panel-body"><p>Update a QR Code design.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>ID of the QR Code design.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#4dbfa0606f321ee2ef00948e024262a9" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="4dbfa0606f321ee2ef00948e024262a9" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span></span>,
+    "<span class="hljs-attribute">creation</span>":<span class="hljs-value"><span class="hljs-string">"2014"</span></span>,
+    "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span></span>,
+    "<span class="hljs-attribute">eyes</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DIAMOND"</span></span>,
+        "<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span></span>, 
+        "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">modules</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"ROUNDED"</span></span>,
+        "<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span>
+    </span>}
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#1c03cf1aed87ed49318b6d7b3bdab00a" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="1c03cf1aed87ed49318b6d7b3bdab00a" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span></span>,
+    "<span class="hljs-attribute">creation</span>":<span class="hljs-value"><span class="hljs-string">"2014"</span></span>,
+    "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span></span>,
+    "<span class="hljs-attribute">eyes</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DIAMOND"</span></span>,
+        "<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span></span>, 
+        "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9937"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">modules</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"ROUNDED"</span></span>,
+        "<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span>
+    </span>}
+</span>}
+</code></pre></li></ul></section><section id="-qr-code-design-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Delete a QR Code design</span></div><div style="float:left"><a href="#-qr-code-design-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/newqrcodes/design/{id}</code></div></div><div class="panel-body"><p>Delete a QR Code design. <strong>Warning:</strong> This action <strong>permanently</strong> removes the QR Code design from the database.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>ID of the QR Code design.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>204</code></strong></li></ul></section><h4 id="-qr-code-graphical-png-representation">QR Code graphical PNG representation&nbsp;<a href="#-qr-code-graphical-png-representation"><i class="fa fa-link"></i></a></h4><p>This resource is the graphical PNG representation of a QR Code identified by its <strong>id</strong>.</p>
+<section id="-qr-code-graphical-png-representation-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Retrieve a QR Code graphical PNG representation</span></div><div style="float:left"><a href="#-qr-code-graphical-png-representation-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/newqrcodes/{id}/png</code></div></div><div class="panel-body"><p>Retrieve a QR Code graphical PNG representation by its <strong>id</strong>.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>ID of the QR Code.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4e2f6fa8ea56b60fbc2c31d68a6cf01c" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="4e2f6fa8ea56b60fbc2c31d68a6cf01c" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">image/png</span><br></code></pre></li></ul></section><h4 id="-zip-file-containing-the-graphical-png-representation-of-a-qr-code">Zip file containing the graphical PNG representation of a QR Code&nbsp;<a href="#-zip-file-containing-the-graphical-png-representation-of-a-qr-code"><i class="fa fa-link"></i></a></h4><p>This resource is a zipped file containing a graphical PNG representation of a QR Code identified by its <strong>id</strong>.</p>
+<section id="-zip-file-containing-the-graphical-png-representation-of-a-qr-code-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Retrieve a Zip file containing the graphical PNG representation of a QR Code</span></div><div style="float:left"><a href="#-zip-file-containing-the-graphical-png-representation-of-a-qr-code-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/newqrcodes/{id}/zip</code></div></div><div class="panel-body"><p>Retrieve a Zip file containing the graphical PNG representation of a QR Code by its <strong>id</strong>.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>ID of the QR Code.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#2053d05eeff964beb00bbc7bdad90f91" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="2053d05eeff964beb00bbc7bdad90f91" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/zip</span><br></code></pre></li></ul></section><h4 id="-zip-file-containing-the-graphical-png-representation-of-multiple-qr-codes">Zip file containing the graphical PNG representation of multiple QR Codes&nbsp;<a href="#-zip-file-containing-the-graphical-png-representation-of-multiple-qr-codes"><i class="fa fa-link"></i></a></h4><p>This resource is a zipped file containing a graphical PNG representation of multiple QR Codes identified by their <strong><em>ids</em></strong>.</p>
+<section id="-zip-file-containing-the-graphical-png-representation-of-multiple-qr-codes-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Retrieve a Zip file containing the graphical PNG representation of multiple QR Codes</span></div><div style="float:left"><a href="#-zip-file-containing-the-graphical-png-representation-of-multiple-qr-codes-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/newqrcodes/globalzip{?ids}</code></div></div><div class="panel-body"><p>Retrieve a Zip file containing the graphical PNG representation of multiple QR Codes by their <strong>ids</strong>.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>ids</dt><dd><code>int</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>IDs of the QR Codes.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#3a0fc545d0c37a538556b4148c4e008d" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="3a0fc545d0c37a538556b4148c4e008d" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/zip</span><br></code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 02 Mar 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>
