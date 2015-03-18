@@ -158,36 +158,143 @@ a.list-group-item.heading:hover {
     "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span>
 </span>}
 </code></pre>
-<p>The owner field is used to match an existing user in the PostgreSQL database.
-The content object defines what is encoded in the QR Code.
-The design object defines the graphical properties of the QR Code.</p>
-<h3>Content object</h3>
-<p>Blahblahblah.</p>
-<pre><code class="language-json">    {
-        "type":"URL",
-        "url":"http://www.unitag.io"
-    }, 
-</code></pre>
-<p>For any other errors not directly related to the structure of QR Codes, the response will contain a JSON body. This JSON document is always an object with the following keys:</p>
 <ul>
-<li><p><code>code</code>: a string identifying the error</p></li>
-<li><p><code>message</code>: a more verbose error description</p></li>
-<li><p><code>details</code>: if present, additional data which could help to figure out the cause of the error</p></li>
+<li><p><code>owner</code>: a field used to match an existing user in the PostgreSQL database.</p></li>
+<li><p><code>content</code>: an object to define what is encoded in the QR Code.</p></li>
+<li><p><code>design</code>: an object to define the graphical properties of the QR Code.</p></li>
 </ul>
+<h3>Content object</h3>
+<p>The content object defines the data encoded in the QR Code and can only be one of the following types: TEXT, URL, CALL, GEOLOC, SMS, WIFI, VCARD, EMAIL, EMAIL, CALENDAR, CALL.</p>
+<ul>
+<li>TEXT</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"TEXT"</span></span>,
+    "<span class="hljs-attribute">text</span>":<span class="hljs-value"><span class="hljs-string">"Hello World"</span>
+</span>}
+</code></pre>
+<ul>
+<li>URL</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"URL"</span></span>,
+    "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"http://www.unitag.io"</span>
+</span>}
+</code></pre>
+<ul>
+<li>GEOLOC</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"GEOLOC"</span></span>,
+    "<span class="hljs-attribute">geoloc</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">latitude</span>":<span class="hljs-value"><span class="hljs-string">"43-36-16.2N"</span></span>,
+        "<span class="hljs-attribute">longitude</span>":<span class="hljs-value"><span class="hljs-string">"1-26-38.4E"</span>
+    </span>}
+</span>}
+</code></pre>
+<ul>
+<li>SMS</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"SMS"</span></span>,
+    "<span class="hljs-attribute">sms</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">tel</span>":<span class="hljs-value"><span class="hljs-string">"+33970805343"</span></span>,
+        "<span class="hljs-attribute">message</span>":<span class="hljs-value"><span class="hljs-string">"Hello World"</span>
+    </span>}
+</span>}
+</code></pre>
+<ul>
+<li>WIFI</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"WIFI"</span></span>,
+    "<span class="hljs-attribute">wifi</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">security</span>":<span class="hljs-value"><span class="hljs-string">"WPA"</span></span>,
+        "<span class="hljs-attribute">ssid</span>":<span class="hljs-value"><span class="hljs-string">"unitag_WIFI"</span></span>,
+        "<span class="hljs-attribute">password</span>":<span class="hljs-value"><span class="hljs-string">"your_password_here"</span>
+    </span>}
+</span>}
+</code></pre>
+<ul>
+<li>VCARD</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"VCARD"</span></span>,
+    "<span class="hljs-attribute">vcard</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">firstname</span>":<span class="hljs-value"><span class="hljs-string">"Romain"</span></span>,
+        "<span class="hljs-attribute">lastname</span>":<span class="hljs-value"><span class="hljs-string">"Kassel"</span></span>,
+        "<span class="hljs-attribute">emailwork</span>":<span class="hljs-value"><span class="hljs-string">"romain.kassel@unitag.io"</span></span>,
+        "<span class="hljs-attribute">emailhome</span>":<span class="hljs-value"><span class="hljs-string">"romain.kassel@gmail.com"</span></span>,
+        "<span class="hljs-attribute">telcell</span>":<span class="hljs-value"><span class="hljs-string">"+33970805341"</span></span>,
+        "<span class="hljs-attribute">telwork</span>":<span class="hljs-value"><span class="hljs-string">"+33970805342"</span></span>,
+        "<span class="hljs-attribute">telhome</span>":<span class="hljs-value"><span class="hljs-string">"+33970805343"</span></span>,
+        "<span class="hljs-attribute">telfax</span>":<span class="hljs-value"><span class="hljs-string">"+33970805344"</span></span>,
+        "<span class="hljs-attribute">website</span>":<span class="hljs-value"><span class="hljs-string">"http://www.unitag.io"</span></span>,
+        "<span class="hljs-attribute">title</span>":<span class="hljs-value"><span class="hljs-string">"CIO"</span></span>,
+        "<span class="hljs-attribute">organization</span>":<span class="hljs-value"><span class="hljs-string">"Unitag"</span></span>,
+        "<span class="hljs-attribute">address</span>":<span class="hljs-value"><span class="hljs-string">"67 allées Jean Jaurès"</span></span>,
+        "<span class="hljs-attribute">postalcode</span>":<span class="hljs-value"><span class="hljs-string">"31000"</span></span>,
+        "<span class="hljs-attribute">city</span>":<span class="hljs-value"><span class="hljs-string">"Toulouse"</span></span>,
+        "<span class="hljs-attribute">country</span>":<span class="hljs-value"><span class="hljs-string">"France"</span>
+    </span>}
+</span>}
+</code></pre>
+<ul>
+<li>EMAIL</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"EMAIL"</span></span>,
+    "<span class="hljs-attribute">email</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">to</span>":<span class="hljs-value"><span class="hljs-string">"romain.kassel@unitag.io"</span></span>,
+        "<span class="hljs-attribute">cc</span>":<span class="hljs-value"><span class="hljs-string">"contact@unitag.io"</span></span>,
+        "<span class="hljs-attribute">bcc</span>":<span class="hljs-value"><span class="hljs-string">"other@my-company.com"</span></span>,
+        "<span class="hljs-attribute">subject</span>":<span class="hljs-value"><span class="hljs-string">"test"</span></span>,
+        "<span class="hljs-attribute">body</span>":<span class="hljs-value"><span class="hljs-string">"Hello World"</span>
+    </span>}
+</span>}
+</code></pre>
+<ul>
+<li>CALENDAR</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"CALENDAR"</span></span>,
+    "<span class="hljs-attribute">calendar</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">title</span>":<span class="hljs-value"><span class="hljs-string">"AGM"</span></span>,
+        "<span class="hljs-attribute">location</span>":<span class="hljs-value"><span class="hljs-string">"Unitag - 67 allées Jean Jaurès 31000 Toulouse"</span></span>,
+        "<span class="hljs-attribute">start</span>":<span class="hljs-value"><span class="hljs-string">"10/02/2015 09:00"</span></span>,
+        "<span class="hljs-attribute">end</span>":<span class="hljs-value"><span class="hljs-string">"10/02/2015 12:00"</span>
+    </span>}
+</span>}
+</code></pre>
+<ul>
+<li>CALL</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"CALL"</span></span>,
+    "<span class="hljs-attribute">call</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">phone</span>":<span class="hljs-value"><span class="hljs-string">"+33970805343"</span>
+    </span>}
+</span>}
+</code></pre>
 <h3>Design object</h3>
 <p>Blahblahblah</p>
-<pre><code>```json
-{
-    &quot;id&quot;:15448332,
-    &quot;creation&quot;:1425217249837,
-    &quot;color&quot;:&quot;8a9935&quot;,
-    &quot;modules&quot;:{&quot;shape&quot;:&quot;rounded&quot;,...},
-    &quot;logo&quot;:null,
+<pre><code class="language-json">{
+    "id":15448332,
+    "creation":1425217249837,
+    "color":"8a9935",
+    "modules":{"shape":"rounded",...},
+    "logo":null,
     ...
 }
-```
 </code></pre>
-</div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 17 Mar 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+</div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 18 Mar 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
 
 </div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
   if (location.protocol === 'file:') {
