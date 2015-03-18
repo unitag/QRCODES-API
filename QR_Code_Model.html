@@ -311,27 +311,29 @@ Use the <code>logo</code> object to add an image on the QR Code.
 Structure:</p></li>
 </ul>
 <pre><code class="language-json">{
-    "url":"https://static-unitag.com/file/freeqr/671f9c9974bf42694ee4eca41be358b5.jpg",
-    "width":"0.2",
-    "height":"0.2",
-    "leftOffset":"0.4",
-    "topOffset":"0.6",
-    "excavate":"true"
-}
-    + `url`: is the only mandatory field. It should contain a URL where the logo image can be found. By default the logo is placed at the center of the image and `excavate` is set to true.
-    +  `width`: used to specify the width of a logo when not using the default positioning. It works like a percentage of the QR Code image width.
-    +  `height`: used to specify the height of a logo when not using the default positioning. It works like a percentage of the QR Code image height.
-    +  `leftOffset`: used to specify where to place the logo from the left edge when not using the default positioning. It works like a percentage of the QR Code image width.
-    +  `topOffset`: used to specify where to place the logo from the top edge when not using the default positioning. It works like a percentage of the QR Code image height.
-    +  `excavate`: if set to true (by default), the QR Code modules behind the logo are removed and this makes it look better. If set to false, the logo is simply placed on the QR Code but can partially hide some of the modules.
-
-+ BACKGROUND
-`background` can be set to either define a background color or a shadow.
-Background color:
-```json
-{
-    "color":"FFCC00"
-}
+    "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"https://static-unitag.com/file/freeqr/671f9c9974bf42694ee4eca41be358b5.jpg"</span></span>,
+    "<span class="hljs-attribute">width</span>":<span class="hljs-value"><span class="hljs-string">"0.2"</span></span>,
+    "<span class="hljs-attribute">height</span>":<span class="hljs-value"><span class="hljs-string">"0.2"</span></span>,
+    "<span class="hljs-attribute">leftOffset</span>":<span class="hljs-value"><span class="hljs-string">"0.4"</span></span>,
+    "<span class="hljs-attribute">topOffset</span>":<span class="hljs-value"><span class="hljs-string">"0.6"</span></span>,
+    "<span class="hljs-attribute">excavate</span>":<span class="hljs-value"><span class="hljs-string">"true"</span>
+</span>}
+</code></pre>
+<pre><code>+ `url`: is the only mandatory field. It should contain a URL where the logo image can be found. By default the logo is placed at the center of the image and `excavate` is set to true.
++  `width`: used to specify the width of a logo when not using the default positioning. It works like a percentage of the QR Code image width.
++  `height`: used to specify the height of a logo when not using the default positioning. It works like a percentage of the QR Code image height.
++  `leftOffset`: used to specify where to place the logo from the left edge when not using the default positioning. It works like a percentage of the QR Code image width.
++  `topOffset`: used to specify where to place the logo from the top edge when not using the default positioning. It works like a percentage of the QR Code image height.
++  `excavate`: if set to true (by default), the QR Code modules behind the logo are removed and this makes it look better. If set to false, the logo is simply placed on the QR Code but can partially hide some of the modules.
+</code></pre>
+<ul>
+<li>BACKGROUND
+<code>background</code> can be set to either define a background color or a shadow.
+Background color:</li>
+</ul>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"FFCC00"</span>
+</span>}
 </code></pre>
 <p>QR Code shadow:</p>
 <pre><code class="language-json">{
