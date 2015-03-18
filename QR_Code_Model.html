@@ -154,31 +154,25 @@ a.list-group-item.heading:hover {
 }
 </code></pre>
 <ul>
-<li><p><code>owner</code>: a field used to match an existing user in the PostgreSQL database.</p></li>
-<li><p><code>content</code>: an object to define what is encoded in the QR Code.</p></li>
-<li><p><code>design</code>: an object to define the graphical properties of the QR Code.</p></li>
+<li><p><code>owner</code> is used to match an existing user in the PostgreSQL database.</p></li>
+<li><p><code>content</code> defines what is encoded in the QR Code.</p></li>
+<li><p><code>design</code> defines the graphical properties of the QR Code.</p></li>
 </ul>
 <h3>Content object</h3>
 <p>The content object defines the data encoded in the QR Code and can only be one of the following types: TEXT, URL, CALL, GEOLOC, SMS, WIFI, VCARD, EMAIL, EMAIL, CALENDAR, CALL.</p>
-<ul>
-<li>TEXT</li>
-</ul>
+<h4>TEXT</h4>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"TEXT"</span></span>,
     "<span class="hljs-attribute">text</span>":<span class="hljs-value"><span class="hljs-string">"Hello World"</span>
 </span>}
 </code></pre>
-<ul>
-<li>URL</li>
-</ul>
+<h4>URL</h4>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"URL"</span></span>,
     "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"http://www.unitag.io"</span>
 </span>}
 </code></pre>
-<ul>
-<li>GEOLOC</li>
-</ul>
+<h4>GEOLOC</h4>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"GEOLOC"</span></span>,
     "<span class="hljs-attribute">geoloc</span>":
@@ -188,9 +182,7 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-<ul>
-<li>SMS</li>
-</ul>
+<h4>SMS</h4>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"SMS"</span></span>,
     "<span class="hljs-attribute">sms</span>":
@@ -200,9 +192,7 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-<ul>
-<li>WIFI</li>
-</ul>
+<h4>WIFI</h4>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"WIFI"</span></span>,
     "<span class="hljs-attribute">wifi</span>":
@@ -213,9 +203,7 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-<ul>
-<li>VCARD</li>
-</ul>
+<h4>VCARD</h4>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"VCARD"</span></span>,
     "<span class="hljs-attribute">vcard</span>":
@@ -238,9 +226,7 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-<ul>
-<li>EMAIL</li>
-</ul>
+<h4>EMAIL</h4>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"EMAIL"</span></span>,
     "<span class="hljs-attribute">email</span>":
@@ -253,9 +239,7 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-<ul>
-<li>CALENDAR</li>
-</ul>
+<h4>CALENDAR</h4>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"CALENDAR"</span></span>,
     "<span class="hljs-attribute">calendar</span>":
@@ -267,9 +251,7 @@ a.list-group-item.heading:hover {
     </span>}
 </span>}
 </code></pre>
-<ul>
-<li>CALL</li>
-</ul>
+<h4>CALL</h4>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"CALL"</span></span>,
     "<span class="hljs-attribute">call</span>":
@@ -303,12 +285,109 @@ a.list-group-item.heading:hover {
 }
 </code></pre>
 <p>Only <code>owner</code>, <code>color</code>, <code>modules</code> and <code>eyes</code> are mandatory. By default there is no <code>logo</code>, no <code>background</code> and <code>quietZone</code> is set to true.</p>
+<h4>MODULES</h4>
+<p>This object defines the graphical properties of the modules of a QR Code.</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DRIFTED"</span></span>,
+    "<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span></span>,
+    "<span class="hljs-attribute">image</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"https://static-unitag.com/file/freeqr/671f9c9974bf42694ee4eca41be358b5.jpg"</span></span>,
+        "<span class="hljs-attribute">enlightment</span>":<span class="hljs-value"><span class="hljs-string">"60.7987"</span></span>,
+        "<span class="hljs-attribute">contrast</span>":<span class="hljs-value"><span class="hljs-string">"0.58"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">gradient</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"c41200"</span></span>,
+        "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"RAD_CYC"</span></span>,
+        "<span class="hljs-attribute">x1</span>":<span class="hljs-value"><span class="hljs-string">"50"</span></span>,
+        "<span class="hljs-attribute">y1</span>":<span class="hljs-value"><span class="hljs-string">"50"</span></span>,
+        "<span class="hljs-attribute">radius</span>":<span class="hljs-value"><span class="hljs-string">"30"</span>
+    </span>}
+</span>}
+</code></pre>
 <ul>
-<li><p>MODULES</p></li>
-<li><p>EYES</p></li>
-<li><p>LOGO
-Use the <code>logo</code> object to add an image on the QR Code.</p></li>
+<li><p><code>shape</code> is mandatory and defines the shape applied to all the QR Code modules. Possible values are: NORMAL, ROUNDED, SHAKED, DISTORTED, MELTED, DOTS, ARROWS, CURVED, DRIFTED, TICTACTOE, CIRCUIT_BOARD, CRYSTAL.</p></li>
+<li><p><code>correctionLevel</code> is also mandatory and specifies the correction level to use when creating the QR Code. With a high correction level, more modules are needed to encode the same data. Possible values are: L (low), M (medium), Q (quartile), H (high).</p></li>
+<li><p><code>gradient</code> defines a color gradient that can be applied to the QR Code modules (see section below).</p></li>
+<li><p><code>image</code> indicates an image to be overlayed on the the QR Code modules (see section below).</p></li>
 </ul>
+<p>Warning: do not specify a gradient and an image at the same time.</p>
+<h5>GRADIENT</h5>
+<p>Available fields to define a gradient are:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"C41200"</span></span>,
+    "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"LIN_ACY"</span></span>,
+    "<span class="hljs-attribute">x1</span>":<span class="hljs-value"><span class="hljs-string">"0"</span></span>,
+    "<span class="hljs-attribute">y1</span>":<span class="hljs-value"><span class="hljs-string">"0"</span></span>,
+    "<span class="hljs-attribute">x2</span>":<span class="hljs-value"><span class="hljs-string">"250"</span></span>,
+    "<span class="hljs-attribute">y2</span>":<span class="hljs-value"><span class="hljs-string">"250"</span>
+    <span class="hljs-string">"radius"</span>:<span class="hljs-string">"20"</span>
+</span>}
+</code></pre>
+<ul>
+<li><p><code>color</code> is the second color used to create the color gradient (the first one being the main design color). This field is mandatory</p></li>
+<li><p><code>type</code> defines the color gradient type. This field is mandatory and all possible values are listed below.</p></li>
+<li><p><code>x1</code> and <code>y1</code> are coordinates (from the top left corner) used to specify a starting point when needed for some of the gradients</p></li>
+<li><p><code>x2</code> and <code>y2</code> are coordinates (from the top left corner) used to specify a second point when needed for some of the gradients</p></li>
+<li><p><code>radius</code> is needed for some of the gradients</p></li>
+</ul>
+<p>Different <code>type</code> values are available:</p>
+<ul>
+<li><p>HORI defines a horizontal gradient</p></li>
+<li><p>VERT defines a vertical gradient</p></li>
+<li><p>DIAG1 defines a gradient along the first QR Code diagonal</p></li>
+<li><p>DIAG2 defines a gradient along the second QR Code diagonal</p></li>
+<li><p>RAD defines a radial gradient from the center of the QR Code</p></li>
+<li><p>LIN_ACY defines a linear gradient (needs 2 points)</p></li>
+<li><p>LIN_CYC defines a cyclic linear gradient (needs 2 points)</p></li>
+<li><p>RAD_ACY defines a radial gradient (needs a center point and a radius)</p></li>
+<li><p>RAD_CYC defines a cyclic radial gradient (needs a center point and a radius)</p></li>
+</ul>
+<h5>IMAGE</h5>
+<p>Available fields to define an image are:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"https://static-unitag.com/file/freeqr/671f9c9974bf42694ee4eca41be358b5.jpg"</span></span>,
+    "<span class="hljs-attribute">brightness</span>":<span class="hljs-value"><span class="hljs-string">"60.7987"</span></span>,
+    "<span class="hljs-attribute">contrast</span>":<span class="hljs-value"><span class="hljs-string">"0.58"</span>
+</span>}
+</code></pre>
+<ul>
+<li><p><code>url</code> is the only mandatory field. It should contain a URL where the image can be found.</p></li>
+<li><p><code>brightness</code> defines the image brightness</p></li>
+<li><p><code>contrast</code> defines the image contrast</p></li>
+</ul>
+<h4>EYES</h4>
+<p>This object defines the graphical properties of the 3 eyes of a QR Code.</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"SPIKE"</span></span>,
+    "<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"007FB6"</span></span>,
+    "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"CC0099"</span></span>,
+    "<span class="hljs-attribute">topRight</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8A9935"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">topLeft</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8A9935"</span></span>,
+        "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"C41200"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">bottom</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"C41200"</span>
+    </span>}
+</span>}
+</code></pre>
+<ul>
+<li><p><code>shape</code> is the only mandatory field and defines the shape of the eyes. Possible values are: DIAMOND, EC_IC, ER_IC, ER_IR, ES_IC, LLLEFT, LLRIGHT, STLEFT, STRIGHT, SBLEFT, SBRIGHT, SHIELD, SPIKE, SFLEAVES, SFLEAVESR, SFLEAVESC, SIMPLE, TURNED, S_CIRCLE, SHARP, WAVE, ECURVE_ICURVE, MORPION, OCTOGON, ALIEN and GRID.</p></li>
+<li><p><code>innerColor</code> defines the color to use for the inner part of an eye (defaulted to the design’s global color).</p></li>
+<li><p><code>outerColor</code> defines the color to use for the outer part of an eye (defaulted to the design’s global color).</p></li>
+<li><p><code>topRight</code> is used to overwrite the color values for the top right eye.</p></li>
+<li><p><code>topLeft</code> is used to overwrite the color values for the top left eye.</p></li>
+<li><p><code>bottom</code> is used to overwrite the color values for the bottom eye.</p></li>
+</ul>
+<h4>LOGO</h4>
+<p>Use the <code>logo</code> object to add an image on the QR Code.</p>
 <p>Structure:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"https://static-unitag.com/file/freeqr/671f9c9974bf42694ee4eca41be358b5.jpg"</span></span>,
@@ -319,18 +398,17 @@ Use the <code>logo</code> object to add an image on the QR Code.</p></li>
     "<span class="hljs-attribute">excavate</span>":<span class="hljs-value"><span class="hljs-string">"true"</span>
 </span>}
 </code></pre>
-<pre><code>+ `url`: is the only mandatory field. It should contain a URL where the logo image can be found. By default the logo is placed at the center of the image and `excavate` is set to true.
-+  `width`: used to specify the width of a logo when not using the default positioning. It works like a percentage of the QR Code image width.
-+  `height`: used to specify the height of a logo when not using the default positioning. It works like a percentage of the QR Code image height.
-+  `leftOffset`: used to specify where to place the logo from the left edge when not using the default positioning. It works like a percentage of the QR Code image width.
-+  `topOffset`: used to specify where to place the logo from the top edge when not using the default positioning. It works like a percentage of the QR Code image height.
-+  `excavate`: if set to true (by default), the QR Code modules behind the logo are removed and this makes it look better. If set to false, the logo is simply placed on the QR Code but can partially hide some of the modules.
-</code></pre>
 <ul>
-<li>BACKGROUND
-<code>background</code> can be set to either define a background color or a shadow.
-Background color:</li>
+<li><p><code>url</code> is the only mandatory field. It should contain a URL where the logo image can be found. By default the logo is placed at the center of the image and <code>excavate</code> is set to true.</p></li>
+<li><p><code>width</code> is used to specify the width of a logo when not using the default positioning. It works like a percentage of the QR Code image width.</p></li>
+<li><p><code>height</code> is used to specify the height of a logo when not using the default positioning. It works like a percentage of the QR Code image height.</p></li>
+<li><p><code>leftOffset</code> is used to specify where to place the logo from the left edge when not using the default positioning. It works like a percentage of the QR Code image width.</p></li>
+<li><p><code>topOffset</code> is used to specify where to place the logo from the top edge when not using the default positioning. It works like a percentage of the QR Code image height.</p></li>
+<li><p><code>excavate</code> tells the generator whether to remove the QR Code modules behind the logo. If set to true (by default), the modules behind the logo are removed and this makes the QR Code look better. If set to false, the logo is simply placed on the QR Code but can partially hide some of the modules.</p></li>
 </ul>
+<h4>BACKGROUND</h4>
+<p><code>background</code> can be set to either define a background color or a shadow.</p>
+<p>Background color:</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"FFCC00"</span>
 </span>}
