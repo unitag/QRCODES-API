@@ -142,21 +142,16 @@ a.list-group-item.heading:hover {
 <h2>JSON model</h2>
 <p>Below is the global structure of a JSON object representing a QR Code:</p>
 <pre><code class="language-json">{
-    "<span class="hljs-attribute">content</span>":
-    <span class="hljs-value">{
-        "<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-string">"URL"</span></span>,
-        "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"http://www.unitag.io"</span>
-    </span>}</span>, 
-    "<span class="hljs-attribute">design</span>":
-    <span class="hljs-value">{
-        "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span></span>,
-        "<span class="hljs-attribute">creation</span>":<span class="hljs-value"><span class="hljs-string">"1426621510629"</span></span>,
-        "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span></span>,
-        "<span class="hljs-attribute">eyes</span>":<span class="hljs-value">{"<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DIAMOND"</span></span>,"<span class="hljs-attribute">innerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span></span>, "<span class="hljs-attribute">outerColor</span>":<span class="hljs-value"><span class="hljs-string">"8a9935"</span></span>}</span>,
-        "<span class="hljs-attribute">modules</span>":<span class="hljs-value">{"<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"ROUNDED"</span></span>,"<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span></span>}
-    </span>}</span>, 
-    "<span class="hljs-attribute">owner</span>":<span class="hljs-value"><span class="hljs-string">"20"</span>
-</span>}
+    "content":
+    {
+        ...
+    }, 
+    "design":
+    {
+        ...
+    }, 
+    "owner":"20"
+}
 </code></pre>
 <ul>
 <li><p><code>owner</code>: a field used to match an existing user in the PostgreSQL database.</p></li>
@@ -284,16 +279,70 @@ a.list-group-item.heading:hover {
 </span>}
 </code></pre>
 <h3>Design object</h3>
-<p>Blahblahblah</p>
+<p>The design object contains all the graphical properties and modifications that define and can be applied to a QR Code image. Its structure is the following:</p>
 <pre><code class="language-json">{
-    "id":15448332,
-    "creation":1425217249837,
-    "color":"8a9935",
-    "modules":{"shape":"rounded",...},
-    "logo":null,
-    ...
+    "owner":20,
+    "color":"007FB6",
+    "modules":
+    {
+        ...
+    },
+    "eyes":
+    {
+        ...
+    },
+    "logo":
+    {
+        ...
+    },
+    "background":
+    {
+        ...
+    },
+    "quietZone":true
 }
 </code></pre>
+<p>Only <code>owner</code>, <code>color</code>, <code>modules</code> and <code>eyes</code> are mandatory. By default there is no <code>logo</code>, no <code>background</code> and <code>quietZone</code> is set to true.</p>
+<ul>
+<li><p>MODULES</p></li>
+<li><p>EYES</p></li>
+<li><p>LOGO
+Use the <code>logo</code> object to add an image on the QR Code.
+Structure:</p></li>
+</ul>
+<pre><code class="language-json">{
+    "url":"https://static-unitag.com/file/freeqr/671f9c9974bf42694ee4eca41be358b5.jpg",
+    "width":"0.2",
+    "height":"0.2",
+    "leftOffset":"0.4",
+    "topOffset":"0.6",
+    "excavate":"true"
+}
+    + `url`: is the only mandatory field. It should contain a URL where the logo image can be found. By default the logo is placed at the center of the image and `excavate` is set to true.
+    +  `width`: used to specify the width of a logo when not using the default positioning. It works like a percentage of the QR Code image width.
+    +  `height`: used to specify the height of a logo when not using the default positioning. It works like a percentage of the QR Code image height.
+    +  `leftOffset`: used to specify where to place the logo from the left edge when not using the default positioning. It works like a percentage of the QR Code image width.
+    +  `topOffset`: used to specify where to place the logo from the top edge when not using the default positioning. It works like a percentage of the QR Code image height.
+    +  `excavate`: if set to true (by default), the QR Code modules behind the logo are removed and this makes it look better. If set to false, the logo is simply placed on the QR Code but can partially hide some of the modules.
+
++ BACKGROUND
+`background` can be set to either define a background color or a shadow.
+Background color:
+```json
+{
+    "color":"FFCC00"
+}
+</code></pre>
+<p>QR Code shadow:</p>
+<pre><code class="language-json">{
+    "<span class="hljs-attribute">shadow</span>":
+    <span class="hljs-value">{
+        "<span class="hljs-attribute">color</span>":<span class="hljs-value"><span class="hljs-string">"BDBDBD"</span></span>,
+        "<span class="hljs-attribute">strength</span>":<span class="hljs-value"><span class="hljs-string">"M"</span>
+    </span>}
+</span>}
+</code></pre>
+<p>There are 3 different values for the field <code>strength</code> field which defines the strength of the shadow: <code>L</code> (light), <code>M</code> (medium), <code>S</code> (strong).</p>
 </div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 18 Mar 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
 
 </div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
