@@ -284,11 +284,12 @@ a.list-group-item.heading:hover {
     "quietZone":true
 }
 </code></pre>
-<p>Only <code>owner</code>, <code>color</code>, <code>modules</code> and <code>eyes</code> are mandatory. By default there is no <code>logo</code>, no <code>background</code> and <code>quietZone</code> is set to true.</p>
+<p>Fields <code>color</code>, <code>modules</code> and <code>eyes</code> are always mandatory, <code>owner</code> is only mandatory when persisting a design entity. By default there is no <code>logo</code>, no <code>background</code> and <code>quietZone</code> is set to true.</p>
 <h4>MODULES</h4>
 <p>This object defines the graphical properties of the modules of a QR Code.</p>
 <pre><code class="language-json">{
     "<span class="hljs-attribute">shape</span>":<span class="hljs-value"><span class="hljs-string">"DRIFTED"</span></span>,
+    "<span class="hljs-attribute">roundness</span>":<span class="hljs-value"><span class="hljs-string">"5"</span></span>,
     "<span class="hljs-attribute">correctionLevel</span>":<span class="hljs-value"><span class="hljs-string">"M"</span></span>,
     "<span class="hljs-attribute">image</span>":
     <span class="hljs-value">{
@@ -307,7 +308,8 @@ a.list-group-item.heading:hover {
 </span>}
 </code></pre>
 <ul>
-<li><p><code>shape</code> is mandatory and defines the shape applied to all the QR Code modules. Possible values are: NORMAL, ROUNDED, SHAKED, DISTORTED, MELTED, DOTS, ARROWS, CURVED, DRIFTED, TICTACTOE, CIRCUIT_BOARD, CRYSTAL.</p></li>
+<li><p><code>shape</code> is mandatory and defines the shape applied to all the QR Code modules. Possible values are: NORMAL, ROUNDED, ROUNDED_LIGHT, ROUNDED_MEDIUM, ROUNDED_STRONG, SHAKED, DISTORTED, MELTED, DOTS, ARROWS, CURVED, DRIFTED, TICTACTOE, CIRCUIT_BOARD, CRYSTAL.</p></li>
+<li><p><code>roundness</code> can be used to specify the rounded effect strength of the ROUNDED shape. Use integer values between 0 and 10. No need to specify a roundness value for shapes ROUNDED_LIGHT, ROUNDED_MEDIUM and ROUNDED_STRONG since they come with a default value.</p></li>
 <li><p><code>correctionLevel</code> is also mandatory and specifies the correction level to use when creating the QR Code. With a high correction level, more modules are needed to encode the same data. Possible values are: L (low), M (medium), Q (quartile), H (high).</p></li>
 <li><p><code>gradient</code> defines a color gradient that can be applied to the QR Code modules (see section below).</p></li>
 <li><p><code>image</code> indicates an image to be overlayed on the the QR Code modules (see section below).</p></li>
@@ -353,9 +355,9 @@ a.list-group-item.heading:hover {
 </span>}
 </code></pre>
 <ul>
-<li><p><code>url</code> is the only mandatory field. It should contain a URL where the image can be found.</p></li>
-<li><p><code>brightness</code> defines the image brightness</p></li>
-<li><p><code>contrast</code> defines the image contrast</p></li>
+<li><p><code>url</code> is the only mandatory field. It should contain a URL where the image can be found. If the URL is invalid or if the image can’t be read, the default background color will be used instead.</p></li>
+<li><p><code>brightness</code> defines the image brightness (use positive values to brighten the image and negative values to darken it, we recommend using values between -100.0 and 100.0 where the changes are most visible)</p></li>
+<li><p><code>contrast</code> defines the image contrast (positive values expected, we recommend using values between 0.0 and 2.0 where the changes are most visible)</p></li>
 </ul>
 <h4>EYES</h4>
 <p>This object defines the graphical properties of the 3 eyes of a QR Code.</p>
@@ -379,7 +381,7 @@ a.list-group-item.heading:hover {
 </span>}
 </code></pre>
 <ul>
-<li><p><code>shape</code> is the only mandatory field and defines the shape of the eyes. Possible values are: DIAMOND, EC_IC, ER_IC, ER_IR, ES_IC, LLLEFT, LLRIGHT, STLEFT, STRIGHT, SBLEFT, SBRIGHT, SHIELD, SPIKE, SFLEAVES, SFLEAVESR, SFLEAVESC, SIMPLE, TURNED, S_CIRCLE, SHARP, WAVE, ECURVE_ICURVE, MORPION, OCTOGON, ALIEN and GRID.</p></li>
+<li><p><code>shape</code> is the only mandatory field and defines the shape of the eyes. Possible values are: DIAMOND, CIRCLE, CIRCLE_ROUNDED, ROUNDED, CURVED, CIRCLE_SQUARE, LEAVES_TL, LEAVES_TR, SPIKE_TL, SPIKE_TR, SPIKE_BL, SPIKE_BR, SPIKE, SHIELD, STAR, ROUNDEDSTAR, CURVEDSTAR, NORMAL, SHAKED, DOTS, DISTORTED, WAVE, TICTACTOE, OCTOGON, ALIEN and GRID.</p></li>
 <li><p><code>innerColor</code> defines the color to use for the inner part of an eye (defaulted to the design’s global color).</p></li>
 <li><p><code>outerColor</code> defines the color to use for the outer part of an eye (defaulted to the design’s global color).</p></li>
 <li><p><code>topRight</code> is used to overwrite the color values for the top right eye.</p></li>
@@ -423,7 +425,7 @@ a.list-group-item.heading:hover {
 </span>}
 </code></pre>
 <p>There are 3 different values for the field <code>strength</code> field which defines the strength of the shadow: <code>L</code> (light), <code>M</code> (medium), <code>S</code> (strong).</p>
-</div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 18 Mar 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+</div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 17 Apr 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
 
 </div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
   if (location.protocol === 'file:') {
