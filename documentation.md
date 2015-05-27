@@ -208,7 +208,7 @@ Values : If needed, set value to the targeted template id Integer.
 		FORCE_SHADOW : ""
 	}
 	
-**GRADIENT_TYPE - STRING**
+**GRADIENT_TYPE - STRING - mandatory**
 
 * From up to down : "HORI"
 * From left to right: "VERT"
