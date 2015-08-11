@@ -50,9 +50,9 @@ Values : If needed, set value to the targeted template id Integer.
 
 ##Data object##
 
-	data : {
-		TYPE : "",
-		DATA : {}
+	data = {
+		"TYPE" : "",
+		"DATA" : {}
 	}
 
 ###"Type" - STRING###
@@ -71,121 +71,121 @@ Values : If needed, set value to the targeted template id Integer.
 
 **Type : url**
 
-	data : {
-		TYPE : "url",
-		DATA : {
-			URL : ""
+	data = {
+		"TYPE" : "url",
+		"DATA" : {
+			"URL" : ""
 		}
 	}
 
 **Type : text**
 
-	data : {
-		TYPE : "text",
-		DATA : {
-			TEXT : ""
+	data = {
+		"TYPE" : "text",
+		"DATA" : {
+			"TEXT" : ""
 		}
 	}
 
 **Type : geoloc**
 
 	data : {
-		TYPE : "geoloc",
-		DATA : {
-			LAT : "",
-			LONG : ""
+		"TYPE" : "geoloc",
+		"DATA" : {
+			"LAT" : "",
+			"LONG" : ""
 		}
 	}
 
 **Type : smsto**
 
-	data : {
-		TYPE : "smsto",
-		DATA : {
-			TEL : "",
-			MESSAGE : ""
+	data = {
+		"TYPE" : "smsto",
+		"DATA" : {
+			"TEL" : "",
+			"MESSAGE" : ""
 		}
 	}
 
 **Type : wifi**
 
-	data : {
-		TYPE : "wifi",
-		DATA : {
-			TYPE : "WEP"/"WPA"/"nopass",
-			SSID : "",
-			PASSWORD : ""
+	data = {
+		"TYPE" : "wifi",
+		"DATA" : {
+			"TYPE" : "WEP"/"WPA"/"nopass",
+			"SSID" : "",
+			"PASSWORD" : ""
 		}
 	}
 	
 **Type : vcard**
 
-	data : {
-		TYPE : "vcard",
-		DATA : {
-			firstname : "",
-			name : "",
-			email;internet : "",
-			email;home;internet : "",
-			tel;cell : "",
-			tel;work : "",
-			tel;home : "",
-			url : "",
-			title : "",
-			org : "",
-			adr : "",
-			pc : "",
-			city : "",
-			country : ""
+	data = {
+		"TYPE" : "vcard",
+		"DATA" : {
+			"FIRSTNAME" : "",
+			"NAME" : "",
+			"EMAIL;INTERNET" : "",
+			"EMAIL;HOME;INTERNET" : "",
+			"TEL;CELL" : "",
+			"TEL;WORK" : "",
+			"TEL;HOME" : "",
+			"URL" : "",
+			"TITLE" : "",
+			"ORG" : "",
+			"ADR" : "",
+			"PC" : "",
+			"CITY" : "",
+			"COUNTRY" : ""
 		}
 	}
 	
 
 **Type : email**
 
-	data : {
-		TYPE : "email",
-		DATA : {
-			EMAIL : "",
-			EMAIL_OBJ : "",
-			EMAIL_CORPS : ""
+	data = {
+		"TYPE" : "email",
+		"DATA" : {
+			"EMAIL" : "",
+			"EMAIL_OBJ" : "",
+			"EMAIL_CORPS" : ""
 		}
 	}
 
 **Type : calendar**
 
-	data : {
-		TYPE : "calendar",
-		DATA : {
-			TITLE : "",
-			LIEU : "",
-			DATE_DEBUT : "",
-			DATE_FIN : ""
+	data = {
+		"TYPE" : "calendar",
+		"DATA" : {
+			"TITLE" : "",
+			"LIEU" : "",
+			"DATE_DEBUT" : "",
+			"DATE_FIN" : ""
 		}
 	}
 *LIEU : Place ; DATE_DEBUT : Start date ; DATE_FIN ; End date*
 	
 **Type : call**
 
-	data : {
-		TYPE : "call",
-		DATA : {
-			PHONE : ""
+	data = {
+		"TYPE" : "call",
+		"DATA" : {
+			"PHONE" : ""
 		}
 	}
 
 
 ##Setting object##
 
-	setting : {
-		LAYOUT : {},
-		EYES : {},
-		LOGO : {},
-		BACKGROUND : {},
-		E : "",
-		BODY_TYPE : INT,
-		ARRONDI : INT,
-		QUIET_ZONE : BOOLEAN
+	setting = {
+		"LAYOUT" : {},
+		"EYES" : {},
+		"LOGO" : {},
+		"BACKGROUND" : {},
+		"E" : "",
+		"BODY_TYPE" : INT,
+		"ARRONDI" : INT,
+		"QUIET_ZONE" : BOOLEAN
 	}
 
 *ARRONDI : Radius*
@@ -193,19 +193,19 @@ Values : If needed, set value to the targeted template id Integer.
 ###LAYOUT - OBJECT###
 
 	LAYOUT : {
-		GRADIENT_TYPE : "",
-		COLOR1 : "",
-		COLOR2 : "",
-		RAYON : INT,
-		X1 : INT,
-		Y1 : INT,
-		X2 : INT,
-		Y2 : INT,
-		COLORBG : "",
-		COLOR_SHADOW : "",
-		X_SHADOW : INT,
-		Y_SHADOW : INT,
-		FORCE_SHADOW : ""
+		"GRADIENT_TYPE" : "",
+		"COLOR1" : "",
+		"COLOR2" : "",
+		"RAYON" : INT,
+		"X1" : INT,
+		"Y1" : INT,
+		"X2" : INT,
+		"Y2" : INT,
+		"COLORBG" : "",
+		"COLOR_SHADOW" : "",
+		"X_SHADOW" : INT,
+		"Y_SHADOW" : INT,
+		"FORCE_SHADOW" : ""
 	}
 	
 **GRADIENT_TYPE - STRING - mandatory**
@@ -237,14 +237,14 @@ _Note: FORCE_SHADOW is a shortcut for X_SHADOW/Y_SHADOW_
 
 ###EYES###
 
-	EYES : {
-		COLOR_EHG : "",
-		COLOR_EHD : "",
-		COLOR_EB : "",
-		COLOR_IHG : "",
-		COLOR_IHD : "",
-		COLOR_IB : "",
-		EYE_TYPE : ""
+	"EYES" : {
+		"COLOR_EHG" : "",
+		"COLOR_EHD" : "",
+		"COLOR_EB" : "",
+		"COLOR_IHG" : "",
+		"COLOR_IHD" : "",
+		"COLOR_IB" : "",
+		"EYE_TYPE" : ""
 	}
 
 **EYE_TYPE**
@@ -268,13 +268,13 @@ _Note: FORCE_SHADOW is a shortcut for X_SHADOW/Y_SHADOW_
 	
 ###LOGO###
 	
-	LOGO : {
-		L_NAME : "",
-		L_X_Norm : FLOAT,
-		L_Y_Norm : FLOAT,
-		L_WIDTH : FLOAT,
-		L_LENGTH : FLOAT,
-		EXCAVATE : BOOLEAN
+	"LOGO" : {
+		"L_NAME" : "",
+		"L_X_Norm" : FLOAT,
+		"L_Y_Norm" : FLOAT,
+		"L_WIDTH" : FLOAT,
+		"L_LENGTH" : FLOAT,
+		"EXCAVATE" : BOOLEAN
 	}
 
 **L_X_Norm & L_Y_Norm**
@@ -284,10 +284,10 @@ The upper corner of the logo in the QR Code as a percentage. Omit to have it cen
 
 ###BACKGROUND###
 
-	BACKGROUND : {
-		IMAGE_BACKGROUND : "",
-		ENLIGHTMENT : FLOAT,
-		CONTRAST : FLOAT
+	"BACKGROUND" : {
+		"IMAGE_BACKGROUND" : "",
+		"ENLIGHTMENT" : FLOAT,
+		"CONTRAST" : FLOAT
 	}
 
 **ENLIGHTMENT & CONTRAST - float**
@@ -328,16 +328,16 @@ Modules look :
 
 Use this module to add text under the QR Code
 
-	TEXT : {
-		LABEL : String,
-		COLOR : 000000,
-		SIZE : int,
-		POSITION : -,
-		STYLES : -,
-		FAMILY : -,
-		FAMILYLINK : String,
-		QRMARGIN : int,
-		SPACING : int
+	"TEXT" : {
+		"LABEL" : String,
+		"COLOR" : 000000,
+		"SIZE" : int,
+		"POSITION" : -,
+		"STYLES" : -,
+		"FAMILY" : -,
+		"FAMILYLINK" : String,
+		"QRMARGIN" : int,
+		"SPACING" : int
 	}
 	
 		
