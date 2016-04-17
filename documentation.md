@@ -240,7 +240,7 @@ _Note: FORCE_SHADOW is a shortcut for X_SHADOW/Y_SHADOW_
 	"EYES" : {
 		"COLOR_EHG" : "",
 		"COLOR_EHD" : "",
-		"COLOR_EB" : "",
+		"COLOR_EBG" : "",
 		"COLOR_IHG" : "",
 		"COLOR_IHD" : "",
 		"COLOR_IB" : "",
